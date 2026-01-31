@@ -1,0 +1,49 @@
+/* Animation */
+@keyframes glareMove {
+  0% {
+    transform: translateX(-100%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(100%) skewX(-12deg);
+  }
+}
+
+/* Base glare layer */
+.glare {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  animation: glareMove 5.5s linear infinite;
+  transform: skewX(-12deg);
+  pointer-events: none;
+}
+
+/* Glare visual */
+.glare::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(225, 195, 230, 0.35) 50%,
+    transparent 60%
+  );
+}
+
+/* Staggered timing */
+.glare-1 {
+  animation-delay: 1s;
+}
+
+.glare-2 {
+  animation-delay: 3s;
+  opacity: 0.6;
+}
+
+.glare-3 {
+  animation-delay: 5s;
+  opacity: 0.4;
+}

@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Gaming Theme - Dark battlefield colors */
+    --background: 220 20% 4%;
+    --foreground: 180 100% 95%;
+
+    --card: 220 25% 8%;
+    --card-foreground: 180 100% 95%;
+
+    --popover: 220 25% 6%;
+    --popover-foreground: 180 100% 95%;
+
+    /* Fire Orange - Primary Action Color */
+    --primary: 357 88% 41%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Neon Cyan - Tech Accent */
+    --secondary: 180 100% 50%;
+    --secondary-foreground: 220 20% 4%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 180 20% 65%;
+
+    --accent: 180 100% 50%;
+    --accent-foreground: 220 20% 4%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 18%;
+    --input: 220 20% 12%;
+    --ring: 180 100% 50%;
+
+    --radius: 0.5rem;
+
+    /* Gaming-specific tokens */
+    --fire-orange: 16 100% 50%;
+    --neon-cyan: 180 100% 50%;
+    --neon-blue: 210 100% 60%;
+    --metal-gray: 220 10% 30%;
+    --glow-orange: 16 100% 60%;
+    --glow-cyan: 180 100% 70%;
+
+    /* Gradients */
+    --gradient-fire: linear-gradient(135deg, hsl(16, 100%, 50%), hsl(0, 100%, 30%));
+    --gradient-neon: linear-gradient(135deg, hsl(180, 100%, 50%), hsl(210, 100%, 60%));
+    --gradient-hero: linear-gradient(180deg, hsl(220, 20%, 4%) 0%, hsl(16, 100%, 10%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(220, 25%, 10%), hsl(220, 25%, 6%));
+
+    /* Effects */
+    --glow-sm: 0 0 10px hsl(var(--neon-cyan) / 0.5);
+    --glow-md: 0 0 20px hsl(var(--neon-cyan) / 0.6), 0 0 40px hsl(var(--neon-cyan) / 0.3);
+    --glow-lg: 0 0 30px hsl(var(--fire-orange) / 0.6), 0 0 60px hsl(var(--fire-orange) / 0.4);
+    --shadow-brutal: 0 10px 40px -10px hsl(0 0% 0% / 0.8);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-exo;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-orbitron font-bold;
+  }
+}
+
+@layer utilities {
+  .text-glow-cyan {
+    text-shadow: 0 0 8px hsl(var(--neon-cyan) / 0.4), 0 0 16px hsl(var(--neon-cyan) / 0.2);
+  }
+
+  .text-glow-orange {
+    text-shadow: 0 0 8px hsl(var(--fire-orange) / 0.4), 0 0 16px hsl(var(--fire-orange) / 0.2);
+  }
+
+  .border-glow-cyan {
+    box-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.5), inset 0 0 10px hsl(var(--neon-cyan) / 0.2);
+  }
+
+  .border-glow-orange {
+    box-shadow: 0 0 10px hsl(var(--fire-orange) / 0.5), inset 0 0 10px hsl(var(--fire-orange) / 0.2);
+  }
+
+  .gradient-fire {
+    background: var(--gradient-fire);
+  }
+
+  .gradient-neon {
+    background: var(--gradient-neon);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes fire-rise {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translateY(-25vh) translateX(10px) scale(1.2);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-50vh) translateX(-10px) scale(1);
+    opacity: 0.7;
+  }
+  75% {
+    transform: translateY(-75vh) translateX(15px) scale(0.8);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(0) scale(0.6);
+    opacity: 0;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    text-shadow: 0 0 10px hsl(var(--fire-orange) / 0.5),
+                 0 0 20px hsl(var(--fire-orange) / 0.3),
+                 0 0 30px hsl(var(--fire-orange) / 0.2);
+  }
+  50% {
+    text-shadow: 0 0 20px hsl(var(--fire-orange) / 0.8),
+                 0 0 30px hsl(var(--fire-orange) / 0.5),
+                 0 0 40px hsl(var(--fire-orange) / 0.3);
+  }
+}
